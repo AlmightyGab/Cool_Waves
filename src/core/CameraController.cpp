@@ -1,7 +1,7 @@
 // CameraController class definition file.
 
-#include "../../include/core/CameraController.h"
 #include <raylib.h>
+#include "../../include/core/CameraController.h"
 
 void CameraController::update(Camera2D& camera)
 {

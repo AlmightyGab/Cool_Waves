@@ -11,6 +11,4 @@ private:
     void update(float dt);
     void render();
     void shutdown();
-
-    bool isRunning_ = false;
 };

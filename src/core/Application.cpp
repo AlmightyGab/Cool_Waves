@@ -1,29 +1,31 @@
 // Application object class definition file.
 
+#include <raylib.h>
 #include "../../include/core/Application.h"
+#include "../../include/core/Config.h"
+#include "../../include/core/Time.h"
 
 void Application::run()
 {
-    // TO MODIFY WITH PROPER DATA
-    float dt;
-
     initialize();
 
-    while (isRunning_) {
-        update(dt);
-        render();
+    while (!WindowShouldClose()) {
+        // update(Time::deltaTime);
+        // render();
     }
 
-    shutdown()
+    shutdown();
 }
 
 void Application::initialize()
 {
-
+    InitWindow(Config::WINDOW_WIDTH, Config::WINDOW_HEIGHT, Config::TITLE);
+    SetTargetFPS(Config::FRAMERATE);
 }
+
  void Application::shutdown()
  {
-
+    CloseWindow();
  }
 
  void Application::update(float dt)
@@ -33,5 +35,7 @@ void Application::initialize()
 
  void Application::render()
  {
-
+    BeginDrawing();
+    ClearBackground(RAYWHITE);
+    EndDrawing();
  }
