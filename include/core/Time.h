@@ -2,9 +2,15 @@
 #pragma once
 
 #include <raylib.h>
+
+namespace core {
+
 class Time 
 {
 public:
+    Time() = default;
+    ~Time() = default;
+
     static float deltaTime;
     static float totalTime;
 
@@ -14,3 +20,5 @@ public:
         totalTime += deltaTime;
     }
 };
+
+}

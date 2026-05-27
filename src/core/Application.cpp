@@ -1,9 +1,11 @@
 // Application object class definition file.
 
 #include <raylib.h>
-#include "../../include/core/Application.h"
-#include "../../include/core/Config.h"
-#include "../../include/core/Time.h"
+#include "core/Application.h"
+#include "core/Config.h"
+#include "core/Time.h"
+
+namespace core {
 
 void Application::run()
 {
@@ -39,3 +41,5 @@ void Application::initialize()
     ClearBackground(RAYWHITE);
     EndDrawing();
  }
+
+}

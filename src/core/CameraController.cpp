@@ -1,7 +1,9 @@
 // CameraController class definition file.
 
 #include <raylib.h>
-#include "../../include/core/CameraController.h"
+#include "core/CameraController.h"
+
+namespace core {
 
 void CameraController::update(Camera2D& camera)
 {
@@ -24,4 +26,6 @@ void CameraController::update(Camera2D& camera)
         if (camera.zoom < 0.1f)
             camera.zoom = 0.1f;
     }
+}
+
 }
