@@ -1,9 +1,10 @@
 // Simulation's state data file.
 #pragma once
 
-#include "SimulationConfig.h"
+#include "simulation/SimulationConfig.h"
 
 namespace sim {
+
     class SimulationState 
     {
     public:

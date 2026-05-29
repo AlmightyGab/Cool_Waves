@@ -2,9 +2,10 @@
 #pragma once
 
 // #include <memory>
-#include "SimulationConfig.h"
-#include "SimulationState.h"
-class Solver;
+#include "simulation/SimulationConfig.h"
+#include "simulation/SimulationState.h"
+#include "simulation/fields/Field.h"
+#include "simulation/grid/Grid2D.h"
 
 namespace sim {
 
@@ -21,7 +22,8 @@ public:
 private:
     SimulationConfig config_;
     SimulationState state_;
-    // std::unique_ptr<Solver> mSolver_;
+    field::Field type_; 
+    grid::Grid2D grid_;
 };
 
 }
