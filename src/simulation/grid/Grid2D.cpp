@@ -6,7 +6,7 @@
 #include <raylib.h>
 #include <stdexcept>
 
-namespace grid {
+namespace sim {
 
 Grid2D::Grid2D(std::size_t width, std::size_t height) :
     width_(width),
@@ -27,11 +27,4 @@ const Cell& Grid2D::getCell(std::size_t x, std::size_t y) const
 
     std::size_t index = y * width_ + x;
     return cells_[index];
-}
-
-Vector2 Grid2D::getDimensions() const
-{
-    return {static_cast<float>(width_), static_cast<float>(height_)};
-}
-
 }

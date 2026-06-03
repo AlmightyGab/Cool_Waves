@@ -2,7 +2,7 @@
 #pragma once
 
 
-namespace grid {
+namespace sim {
 
 struct Cell 
 {

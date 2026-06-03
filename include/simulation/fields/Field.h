@@ -2,23 +2,35 @@
 #pragma once
 
 #include <raylib.h>
+#include <cstddef>
+#include <vector>
+#include "simulation/grid/Grid2D.h"
 
-class Grid2D;
-
-namespace field {
+namespace sim {
 
 class Field
 {
 public:
-    Field(Grid2D* grid);
-    virtual ~Field();
+    explicit Field(const Grid2D& grid);
+    virtual ~Field() = default;
 
-    Vector2 getSize() const { return size_; }
+    void clear();
+    void fill(float value);
+    float getValue(std::size_t x, std::size_t y) const;
+    void setValue(std::size_t x, std::size_t y, float value);
 
-    float get();
+    std::size_t getWidth() const noexcept { return width_; }
+    std::size_t getHeight() const noexcept { return height_; }
+
+    bool isValidPosition(std::size_t x, std::size_t y) const noexcept;
 
 private:
-    Vector2 size_;
+    std::size_t index(std::size_t x, std::size_t y) const;
+
+    std::size_t width_ = 0;
+    std::size_t height_ = 0;
+
+    std::vector<float> values_;
 };
 
 }

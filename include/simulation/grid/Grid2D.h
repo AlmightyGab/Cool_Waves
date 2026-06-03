@@ -6,7 +6,7 @@
 #include <raylib.h>
 #include "simulation/grid/Cell.h"
 
-namespace grid {
+namespace sim {
 
 class Grid2D
 {
@@ -18,7 +18,8 @@ public:
 
     const Cell& getCell(std::size_t x, std::size_t y) const;
 
-    Vector2 getDimensions() const;
+    std::size_t getWidth() const { return width_; }
+    std::size_t getHeight() const { return height_; }
 
 private:
     std::size_t width_;
