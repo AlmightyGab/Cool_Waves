@@ -6,8 +6,8 @@ namespace sim {
 
 struct Cell 
 {
-    float amplitude_ = 0.0f;
-    float velocity_ = 0.0f;
+    float amplitude = 0.0f;
+    float velocity = 0.0f;
 };
 
 }

@@ -4,16 +4,22 @@
 #include "core/Application.h"
 #include "core/Config.h"
 #include "core/Time.h"
+#include "simulation/Simulation.h"
+#include "simulation/SimulationConfig.h"
 
 namespace core {
+
+Application::Application() :
+    simulation_(sim::SimulationConfig())
+{
+}
 
 void Application::run()
 {
     initialize();
-
     while (!WindowShouldClose()) {
         // update(Time::deltaTime);
-        // render();
+        render();
     }
 
     shutdown();
@@ -38,7 +44,8 @@ void Application::initialize()
  void Application::render()
  {
     BeginDrawing();
-    ClearBackground(RAYWHITE);
+    ClearBackground(BLANK);
+    gridRenderer_.render(simulation_.getGrid());
     EndDrawing();
  }
 

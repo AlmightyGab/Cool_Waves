@@ -8,13 +8,14 @@ namespace sim {
 Simulation::Simulation(const SimulationConfig& config) :
     config_(config),
     state_(config),
-    grid_(config.gridWidth, config.gridHeight)
+    grid_(config)
 {
 }
 
 void Simulation::update(float dt) 
 {
     // physics go here.
+    
 }
 
 void Simulation::reset()

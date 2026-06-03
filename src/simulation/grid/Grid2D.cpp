@@ -1,6 +1,7 @@
 // Grid2D definition file.
 
 #include "simulation/grid/Grid2D.h"
+#include "simulation/SimulationConfig.h"
 
 #include <cstddef>
 #include <raylib.h>
@@ -8,9 +9,10 @@
 
 namespace sim {
 
-Grid2D::Grid2D(std::size_t width, std::size_t height) :
-    width_(width),
-    height_(height)
+Grid2D::Grid2D(const SimulationConfig& config) :
+    width_(config.gridWidth),
+    height_(config.gridHeight),
+    cellSize_(config.cellSize)
 {
     cells_.reserve(width_ * height_);
 }

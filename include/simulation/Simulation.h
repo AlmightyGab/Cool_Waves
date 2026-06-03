@@ -6,6 +6,7 @@
 #include "simulation/SimulationState.h"
 #include "simulation/fields/Field.h"
 #include "simulation/grid/Grid2D.h"
+#include <vector>
 
 namespace sim {
 
@@ -18,6 +19,7 @@ public:
     void reset();
 
     const SimulationState& getState() const { return state_; }
+    const Grid2D& getGrid() const { return grid_; }
 
 private:
     SimulationConfig config_;
