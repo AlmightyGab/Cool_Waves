@@ -5,7 +5,7 @@
 
 int main()
 {
-    Application app;
+    core::Application app;
     app.run();
 
     return 0;

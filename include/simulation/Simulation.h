@@ -22,8 +22,7 @@ public:
 private:
     SimulationConfig config_;
     SimulationState state_;
-    field::Field type_; 
-    grid::Grid2D grid_;
+    Grid2D grid_;
 };
 
 }

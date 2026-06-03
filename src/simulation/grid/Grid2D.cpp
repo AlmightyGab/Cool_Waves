@@ -28,3 +28,5 @@ const Cell& Grid2D::getCell(std::size_t x, std::size_t y) const
     std::size_t index = y * width_ + x;
     return cells_[index];
 }
+
+}
