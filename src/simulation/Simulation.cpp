@@ -3,6 +3,7 @@
 #include "simulation/Simulation.h"
 #include "simulation/SimulationConfig.h"
 #include "simulation/grid/Grid2D.h"
+
 namespace sim {
 
 Simulation::Simulation(const SimulationConfig& config) :

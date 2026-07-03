@@ -31,4 +31,13 @@ const Cell& Grid2D::getCell(std::size_t x, std::size_t y) const
     return cells_[index];
 }
 
+Cell& Grid2D::getCell(std::size_t x, std::size_t y) 
+{
+    if (x >= width_ || y >= height_)
+        throw std::out_of_range("Grid2D::getCell : Invalid position passed as argument.");
+
+    std::size_t index = y * width_ + x;
+    return cells_[index];
+}
+
 }

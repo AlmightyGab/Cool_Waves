@@ -18,6 +18,7 @@ public:
     void update();
 
     const Cell& getCell(std::size_t x, std::size_t y) const;
+    Cell& getCell(std::size_t x, std::size_t y);
 
     std::size_t getWidth() const { return width_; }
     std::size_t getHeight() const { return height_; }
