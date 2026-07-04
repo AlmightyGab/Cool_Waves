@@ -35,8 +35,9 @@ namespace sim {
 
         void applyFixedDirichletBoundary(Grid2D& grid) const;
         
-        float waveSpeed_;
-        float damping_;
+        // Arbitrary values 
+        float waveSpeed_ = 10.0f;
+        float damping_ = 0.995f;
     };
 
 }

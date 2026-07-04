@@ -43,4 +43,21 @@ namespace sim {
         }
     }
 
+    void WaveSolver::step(Grid2D& grid, float dt)
+    {
+        for (std::size_t x = 0; x <= grid.getWidth(); ++x) {
+            for (std::size_t y = 0; y <= grid.getHeight(); ++y) {
+                float acc = computeAcceleration(grid, x, y);
+                Cell& cell = grid.getCell(x, y);
+
+                cell.velocity += acc * dt;
+                cell.velocity *= getDamping();
+
+                cell.amplitude += cell.velocity * dt;
+            }
+        }
+
+        applyFixedDirichletBoundary(grid);
+    }
+
 }
