@@ -4,7 +4,7 @@
 #include <cstddef>
 
 namespace sim {
-    class Grid2D;
+    class Field;
 
     class WaveSolver 
     {
@@ -12,7 +12,7 @@ namespace sim {
         WaveSolver() = default;
         ~WaveSolver() = default;
 
-        void step(Grid2D& grid, float dt);
+        void solve(Field& field, float dt);
         
         void setWaveSpeed(float speed) { waveSpeed_ = speed; }
         float getWaveSpeed() const { return waveSpeed_; }
@@ -22,18 +22,18 @@ namespace sim {
 
     private:
         float computeLaplacian(
-            const Grid2D& grid,
+            Field field,
             std::size_t x,
             std::size_t y
         ) const;
 
         float computeAcceleration(
-            Grid2D& grid,
+            Field& field,
             std::size_t x,
             std::size_t y
         ) const;
 
-        void applyFixedDirichletBoundary(Grid2D& grid) const;
+        void applyFixedDirichletBoundary(Field& field) const;
         
         // Arbitrary values 
         float waveSpeed_ = 10.0f;

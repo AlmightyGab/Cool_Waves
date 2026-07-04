@@ -1,36 +1,34 @@
-// Field object class header file. (kind of like a 2D memory wrapper)
+// Field object class header file. (Physical meaning using the sim::Grid2D container.
 #pragma once
 
+#include <optional>
 #include <raylib.h>
 #include <cstddef>
-#include <vector>
 #include "simulation/grid/Grid2D.h"
 
 namespace sim {
 
-class Field
-{
-public:
-    explicit Field(const Grid2D& grid);
-    virtual ~Field() = default;
+    class Field
+    {
+    public:
+        explicit Field(Grid2D grid);
+        virtual ~Field() = default;
 
-    void clear();
-    void fill(float value);
-    float getValue(std::size_t x, std::size_t y) const;
-    void setValue(std::size_t x, std::size_t y, float value);
+        Cell& at(std::size_t x, std::size_t y) { return grid_.getCell(x, y); }
+        const Cell& at(std::size_t x, std::size_t y) const { return grid_.getCell(x, y); }
 
-    std::size_t getWidth() const noexcept { return width_; }
-    std::size_t getHeight() const noexcept { return height_; }
+        // float amplitude(std::size_t x, std::size_t y) { return grid_.getCell(x, y).amplitude; }
+        // const float amplitude(std::size_t x, std::size_t y) const { return grid_.getCell(x, y).amplitude; }
 
-    bool isValidPosition(std::size_t x, std::size_t y) const noexcept;
+        // float velocity(std::size_t x, std::size_t y) { return grid_.getCell(x, y).velocity; }
+        // const float velocity(std::size_t x, std::size_t y) const { return grid_.getCell(x, y).velocity; }
+        
+        std::size_t getWidth() const { return grid_.getWidth(); }
+        std::size_t getHeight() const { return grid_.getHeight(); }
 
-private:
-    std::size_t index(std::size_t x, std::size_t y) const;
-
-    std::size_t width_ = 0;
-    std::size_t height_ = 0;
-
-    std::vector<float> values_;
-};
+    private:
+        Grid2D grid_;
+        
+    };
 
 }
