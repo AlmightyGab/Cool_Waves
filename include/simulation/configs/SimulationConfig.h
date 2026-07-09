@@ -5,7 +5,8 @@
 
 namespace sim {
 
-    struct SimulationConfig{
+    struct SimulationConfig
+    {
         std::size_t gridWidth = 400;
         std::size_t gridHeight = 400;
 
@@ -13,6 +14,7 @@ namespace sim {
         float timeStep = 0.016f;
         float simulationSpeed = 1.0f;
 
+        
     };
 
 }

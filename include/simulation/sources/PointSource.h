@@ -1,6 +1,7 @@
 // Ponctual source object header file.
 #pragma once
 
+#include "simulation/configs/PointSourceConfig.h"
 #include "simulation/sources/WaveSource.h"
 #include <cstddef>
 
@@ -10,7 +11,8 @@ namespace sim {
     class PointSource : public WaveSource
     {
     public:
-        PointSource(std::size_t x, std::size_t y, float impulse, float frequency, float phase);
+        PointSource(const PointSourceConfig& config);
+        PointSource(std::size_t x, std::size_t y, float amplitude, float frequency, float phase);
         ~PointSource() = default;
 
         void apply(Field& field, float time, float dt) override;

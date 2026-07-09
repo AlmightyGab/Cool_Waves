@@ -4,11 +4,21 @@
 
 #include <cmath>
 #include <cstddef>
+#include "simulation/configs/PointSourceConfig.h"
 #include "simulation/fields/Field.h"
 #include "simulation/grid/Cell.h"
 
 namespace sim {
     
+    PointSource::PointSource(const PointSourceConfig& config) :
+        x_(config.x),
+        y_(config.y),
+        amplitude_(config.amplitude),
+        frequency_(config.frequency),
+        phase_(config.phase)
+    {
+    }
+
     PointSource::PointSource(std::size_t x, std::size_t y, float amplitude, float frequency, float phase) :
         x_(x),
         y_(y),
