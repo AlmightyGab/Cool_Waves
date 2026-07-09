@@ -5,7 +5,7 @@
 #include "core/Config.h"
 #include "core/Time.h"
 #include "simulation/Simulation.h"
-#include "simulation/SimulationConfig.h"
+#include "simulation/configs/SimulationConfig.h"
 
 namespace core {
 
@@ -45,7 +45,7 @@ void Application::initialize()
  {
     BeginDrawing();
     ClearBackground(BLANK);
-    gridRenderer_.render(simulation_.getGrid());
+    fieldRenderer_.render(simulation_.getField());
     EndDrawing();
  }
 

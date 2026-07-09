@@ -4,7 +4,7 @@
 #include <cstddef>
 #include <vector>
 #include <raylib.h>
-#include "simulation/SimulationConfig.h"
+#include "simulation/configs/SimulationConfig.h"
 #include "simulation/grid/Cell.h"
 
 namespace sim {
@@ -14,8 +14,6 @@ class Grid2D
 public:
     Grid2D(const SimulationConfig& config);
     ~Grid2D() = default;
-
-    void update();
 
     const Cell& getCell(std::size_t x, std::size_t y) const;
     Cell& getCell(std::size_t x, std::size_t y);

@@ -2,7 +2,7 @@
 #pragma once
 
 #include "simulation/Simulation.h"
-#include "graphics/GridRenderer.h"
+#include "graphics/FieldRenderer.h"
 
 namespace core {
 
@@ -20,7 +20,7 @@ private:
     void shutdown();
 
     sim::Simulation simulation_;
-    graphics::GridRenderer gridRenderer_;
+    graphics::FieldRenderer fieldRenderer_;
 };
 
 }

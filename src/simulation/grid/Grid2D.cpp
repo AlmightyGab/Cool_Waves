@@ -1,7 +1,7 @@
 // Grid2D definition file.
 
 #include "simulation/grid/Grid2D.h"
-#include "simulation/SimulationConfig.h"
+#include "simulation/configs/SimulationConfig.h"
 
 #include <cstddef>
 #include <raylib.h>
@@ -14,12 +14,7 @@ Grid2D::Grid2D(const SimulationConfig& config) :
     height_(config.gridHeight),
     cellSize_(config.cellSize)
 {
-    cells_.reserve(width_ * height_);
-}
-
-void Grid2D::update()
-{
-
+    cells_.resize(width_ * height_);
 }
 
 const Cell& Grid2D::getCell(std::size_t x, std::size_t y) const
