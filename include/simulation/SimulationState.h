@@ -1,24 +1,20 @@
 // Simulation's state data file.
 #pragma once
 
-#include "simulation/configs/SimulationConfig.h"
-
 namespace sim {
 
     class SimulationState 
     {
     public:
-        explicit SimulationState(const SimulationConfig& config);
+        explicit SimulationState() = default;
 
-        void reset();
+        void reset() { time_ = 0.0f; }
 
-        float getTime() const { return time_; }
-
-    private:
         float time_ = 0.0f;
+        unsigned frame_ = 0;
 
-        std::size_t gridWidth_ = 0;
-        std::size_t gridHeight_ = 0;
+        bool paused = false;
+
     };
 
 }

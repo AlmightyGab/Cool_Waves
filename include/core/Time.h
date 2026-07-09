@@ -8,11 +8,8 @@ namespace core {
 class Time 
 {
 public:
-    Time() = default;
-    ~Time() = default;
-
-    static float deltaTime;
-    static float totalTime;
+    inline static float deltaTime;
+    inline static float totalTime;
 
     static void update()
     {

@@ -45,8 +45,8 @@ namespace sim {
 
     void WaveSolver::solve(Field& field, float dt)
     {
-        for (std::size_t x = 0; x <= field.getWidth(); ++x) {
-            for (std::size_t y = 0; y <= field.getHeight(); ++y) {
+        for (std::size_t y = 1; y < field.getHeight() - 1; ++y) {
+            for (std::size_t x = 1; x < field.getWidth() - 1; ++x) {
                 float acc = computeAcceleration(field, x, y);
                 Cell& cell = field.at(x, y);
 

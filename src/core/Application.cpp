@@ -17,8 +17,21 @@ Application::Application() :
 void Application::run()
 {
     initialize();
+
+    float accumulator = 0.0f;
+    constexpr float SIM_DT = 0.01f;
+
     while (!WindowShouldClose()) {
-        // update(Time::deltaTime);
+
+        Time::update();
+
+        accumulator += Time::deltaTime;
+
+        while (accumulator >= SIM_DT) {
+            simulation_.update(SIM_DT);
+            accumulator -= SIM_DT;
+        }
+
         render();
     }
 
@@ -38,7 +51,7 @@ void Application::initialize()
 
  void Application::update(float dt)
  {
-
+    simulation_.update(dt);
  }
 
  void Application::render()

@@ -14,7 +14,6 @@ file(GLOB_RECURSE SRC_FILES
 )
 
 file(GLOB_RECURSE HEADER_FILES
-    include/*.hpp
     include/*.h
 )
 

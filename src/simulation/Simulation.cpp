@@ -4,6 +4,8 @@
 #include "simulation/configs/SimulationConfig.h"
 #include "simulation/fields/Field.h"
 #include "simulation/grid/Grid2D.h"
+#include "simulation/solvers/WaveSolver.h"
+#include "simulation/sources/WaveSource.h"
 
 #include <iostream>
 
@@ -11,7 +13,7 @@ namespace sim {
 
     Simulation::Simulation(const SimulationConfig& config) :
         config_(config),
-        state_(config),
+        state_(),
         grid_(config),
         field_(grid_)
     {
@@ -21,8 +23,16 @@ namespace sim {
 
     void Simulation::update(float dt) 
     {
-        // physics go here.
+        // Update sim state
+        state_.time_ += dt;
+        ++state_.frame_;
+
+        // Apply wave sources
+        for (auto& source : sources_) 
+            source->apply(field_, state_.time_, dt);
         
+        // Solve each cells
+        solver_.solve(field_, dt);
     }
 
     void Simulation::reset()
