@@ -59,7 +59,7 @@ namespace sim {
                 newCell.velocity += acc * dt;
                 newCell.velocity *= getDamping();
 
-                newCell.amplitude += oldCell.amplitude + newCell.velocity * dt;
+                newCell.amplitude = oldCell.amplitude + newCell.velocity * dt;
 
                 newCell.source = 0.0f;
             }

@@ -21,6 +21,8 @@ namespace sim {
 
         float getCellSize() const { return grid_->getCellSize(); }
 
+        void resetSources() { grid_->resetSources(); }
+
         Field& operator=(const Field& other) {
             if (this != &other)
                 grid_ = other.grid_;

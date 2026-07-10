@@ -23,6 +23,8 @@ public:
 
     float getCellSize() const { return cellSize_; }
 
+    void resetSources();
+
 private:
     std::size_t width_;
     std::size_t height_;

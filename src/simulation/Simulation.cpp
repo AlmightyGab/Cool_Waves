@@ -35,6 +35,7 @@ namespace sim {
         ++state_.frame_;
 
         // Apply wave sources
+        field_.resetSources();
         for (auto& source : sources_) 
             source->apply(field_, state_.time_, dt);
         

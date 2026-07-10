@@ -9,30 +9,39 @@
 
 namespace sim {
 
-Grid2D::Grid2D(const SimulationConfig& config) :
-    width_(config.gridWidth),
-    height_(config.gridHeight),
-    cellSize_(config.cellSize)
-{
-    cells_.resize(width_ * height_);
-}
+    Grid2D::Grid2D(const SimulationConfig& config) :
+        width_(config.gridWidth),
+        height_(config.gridHeight),
+        cellSize_(config.cellSize)
+    {
+        cells_.resize(width_ * height_);
+    }
 
-const Cell& Grid2D::getCell(std::size_t x, std::size_t y) const
-{
-    if (x >= width_ || y >= height_)
-        throw std::out_of_range("Grid2D::getCell : Invalid position passed as argument.");
+    const Cell& Grid2D::getCell(std::size_t x, std::size_t y) const
+    {
+        if (x >= width_ || y >= height_)
+            throw std::out_of_range("Grid2D::getCell : Invalid position passed as argument.");
 
-    std::size_t index = y * width_ + x;
-    return cells_[index];
-}
+        std::size_t index = y * width_ + x;
+        return cells_[index];
+    }
 
-Cell& Grid2D::getCell(std::size_t x, std::size_t y) 
-{
-    if (x >= width_ || y >= height_)
-        throw std::out_of_range("Grid2D::getCell : Invalid position passed as argument.");
+    Cell& Grid2D::getCell(std::size_t x, std::size_t y) 
+    {
+        if (x >= width_ || y >= height_)
+            throw std::out_of_range("Grid2D::getCell : Invalid position passed as argument.");
 
-    std::size_t index = y * width_ + x;
-    return cells_[index];
-}
+        std::size_t index = y * width_ + x;
+        return cells_[index];
+    }
+
+    void Grid2D::resetSources()
+    {
+        for (std::size_t y = 1; y < height_ - 1; ++y) {
+            for (std::size_t x = 1; x < width_ - 1; ++x) {
+                getCell(x, y).source = 0.0f;
+            }
+        }
+    }
 
 }

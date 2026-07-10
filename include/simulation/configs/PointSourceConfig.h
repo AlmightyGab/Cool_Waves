@@ -13,7 +13,7 @@ namespace sim {
         std::size_t y = floor(SimulationConfig::gridHeight / 2);
 
         float amplitude = 10.0f;
-        float frequency = 5.0f;
+        float frequency = 50.0f;
         float phaseOffset = 0.0f;
 
     };
