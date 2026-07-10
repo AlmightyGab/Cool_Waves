@@ -45,17 +45,27 @@ namespace sim {
 
     void WaveSolver::solve(Field& field, float dt)
     {
+        Field nextField = field;
+
         for (std::size_t y = 1; y < field.getHeight() - 1; ++y) {
             for (std::size_t x = 1; x < field.getWidth() - 1; ++x) {
+                
+                Cell& oldCell = field.at(x, y);
+                Cell& newCell = nextField.at(x, y);
+
                 float acc = computeAcceleration(field, x, y);
-                Cell& cell = field.at(x, y);
+                acc += oldCell.source;
 
-                cell.velocity += acc * dt;
-                cell.velocity *= getDamping();
+                newCell.velocity += acc * dt;
+                newCell.velocity *= getDamping();
 
-                cell.amplitude += cell.velocity * dt;
+                newCell.amplitude += oldCell.amplitude + newCell.velocity * dt;
+
+                newCell.source = 0.0f;
             }
         }
+
+        field = std::move(nextField);
 
         applyFixedDirichletBoundary(field);
     }

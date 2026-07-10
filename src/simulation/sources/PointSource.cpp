@@ -3,6 +3,7 @@
 #include "simulation/sources/PointSource.h"
 
 #include <cmath>
+#include <numbers>
 #include <cstddef>
 #include "simulation/configs/PointSourceConfig.h"
 #include "simulation/fields/Field.h"
@@ -15,16 +16,16 @@ namespace sim {
         y_(config.y),
         amplitude_(config.amplitude),
         frequency_(config.frequency),
-        phase_(config.phase)
+        phaseOffset_(config.phaseOffset)
     {
     }
 
-    PointSource::PointSource(std::size_t x, std::size_t y, float amplitude, float frequency, float phase) :
+    PointSource::PointSource(std::size_t x, std::size_t y, float amplitude, float frequency, float phaseOffset) :
         x_(x),
         y_(y),
         amplitude_(amplitude),
         frequency_(frequency),
-        phase_(phase)
+        phaseOffset_(phaseOffset)
     {
     }
 
@@ -32,7 +33,7 @@ namespace sim {
     {
         Cell& cell = field.at(x_, y_);
     
-        cell.velocity += amplitude_ * std::sin(2.0f * M_PI * frequency_ * time + phase_) * dt;
+        cell.source += amplitude_ * std::sin(2.0f * std::numbers::pi_v<float> * frequency_ * time + phaseOffset_);
     }
 
 }

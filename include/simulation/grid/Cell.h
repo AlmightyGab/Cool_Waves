@@ -8,6 +8,7 @@ struct Cell
 {
     float amplitude = 0.0f;
     float velocity = 0.0f;
+    float source = 0.0f;
 };
 
 }
