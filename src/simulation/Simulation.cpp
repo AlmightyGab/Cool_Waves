@@ -22,7 +22,7 @@ namespace sim {
     {
         // Hardcoded source to test; TO REMOVE
         PointSourceConfig sourceConfig;
-        sources_.push_back(std::make_unique<PointSource>(PointSource(sourceConfig)));
+        sources_.push_back(std::make_unique<PointSource>(PointSource(sourceConfig, field_)));
 
         // Debugging print; TO REMOVE
         std::cout << "Simulation construction succesful." << std::endl;
@@ -34,13 +34,13 @@ namespace sim {
         state_.time_ += dt;
         ++state_.frame_;
 
+        // Solve each cells
+        solver_.solve(field_, dt);
+
         // Apply wave sources
-        field_.resetSources();
         for (auto& source : sources_) 
             source->apply(field_, state_.time_, dt);
         
-        // Solve each cells
-        solver_.solve(field_, dt);
     }
 
     void Simulation::reset()

@@ -35,13 +35,4 @@ namespace sim {
         return cells_[index];
     }
 
-    void Grid2D::resetSources()
-    {
-        for (std::size_t y = 1; y < height_ - 1; ++y) {
-            for (std::size_t x = 1; x < width_ - 1; ++x) {
-                getCell(x, y).source = 0.0f;
-            }
-        }
-    }
-
 }

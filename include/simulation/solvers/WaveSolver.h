@@ -17,18 +17,12 @@ namespace sim {
         void setWaveSpeed(float speed) { waveSpeed_ = speed; }
         float getWaveSpeed() const { return waveSpeed_; }
 
-        void setDamping(float damping) { damping_ = damping; }
-        float getDamping() const {return damping_; }
+        void setDampingCoefficient(float damping) { damping_ = damping; }
+        float getDampingCoefficient() const {return damping_; }
 
     private:
         float computeLaplacian(
             Field field,
-            std::size_t x,
-            std::size_t y
-        ) const;
-
-        float computeAcceleration(
-            Field& field,
             std::size_t x,
             std::size_t y
         ) const;

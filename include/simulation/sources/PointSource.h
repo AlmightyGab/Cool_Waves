@@ -4,16 +4,16 @@
 #include "simulation/configs/PointSourceConfig.h"
 #include "simulation/sources/WaveSource.h"
 #include <cstddef>
+#include "simulation/fields/Field.h"
 
 namespace sim {
-    class Field;
 
     class PointSource : public WaveSource
     {
     public:
-        PointSource(const PointSourceConfig& config);
-        PointSource(std::size_t x, std::size_t y, float amplitude, float frequency, float phaseOffset);
-        ~PointSource() = default;
+        PointSource(const PointSourceConfig& config, Field& field);
+        PointSource(std::size_t x, std::size_t y, float amplitude, float frequency, float phaseOffset, Field& field);
+        ~PointSource() { field_.at(x_, y_).isSource = false; }
 
         void apply(Field& field, float time, float dt) override;
     
@@ -22,6 +22,8 @@ namespace sim {
         float amplitude_; 
         float frequency_;
         float phaseOffset_;
+
+        Field& field_;
 
     };
 
