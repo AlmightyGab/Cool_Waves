@@ -3,6 +3,7 @@
 
 #include <raylib.h>
 #include <cstddef>
+
 #include "simulation/grid/Grid2D.h"
 
 namespace sim {
@@ -10,6 +11,7 @@ namespace sim {
     class Field
     {
     public:
+        explicit Field() = default;
         explicit Field(Grid2D& grid) : grid_(&grid) {}
         virtual ~Field() = default;
 

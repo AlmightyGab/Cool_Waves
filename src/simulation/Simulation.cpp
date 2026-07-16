@@ -1,5 +1,8 @@
 //Simulation object class definition file.
 
+#include <iostream>
+#include <memory>
+
 #include "simulation/Simulation.h"
 #include "simulation/configs/PointSourceConfig.h"
 #include "simulation/configs/SimulationConfig.h"
@@ -9,17 +12,16 @@
 #include "simulation/sources/PointSource.h"
 #include "simulation/sources/WaveSource.h"
 
-#include <iostream>
-#include <memory>
-
 namespace sim {
 
     Simulation::Simulation(const SimulationConfig& config) :
         config_(config),
         state_(),
         grid_(config),
-        field_(grid_)
+        field_()
     {
+        field_ = Field(grid_);
+
         // Hardcoded source to test; TO REMOVE
         PointSourceConfig sourceConfig;
         sources_.push_back(std::make_unique<PointSource>(PointSource(sourceConfig, field_)));

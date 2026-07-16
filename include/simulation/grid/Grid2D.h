@@ -4,6 +4,7 @@
 #include <cstddef>
 #include <vector>
 #include <raylib.h>
+
 #include "simulation/configs/SimulationConfig.h"
 #include "simulation/grid/Cell.h"
 

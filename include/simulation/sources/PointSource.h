@@ -1,9 +1,10 @@
 // Ponctual source object header file.
 #pragma once
 
+#include <cstddef>
+
 #include "simulation/configs/PointSourceConfig.h"
 #include "simulation/sources/WaveSource.h"
-#include <cstddef>
 #include "simulation/fields/Field.h"
 
 namespace sim {

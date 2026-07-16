@@ -3,6 +3,7 @@
 
 #include <vector>
 #include <memory>
+
 #include "simulation/configs/SimulationConfig.h"
 #include "simulation/SimulationState.h"
 #include "simulation/fields/Field.h"
