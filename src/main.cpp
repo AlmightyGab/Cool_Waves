@@ -1,7 +1,7 @@
 // Project's tiny main file.
 
 #include <raylib.h>
-#include "../include/core/Application.h"
+#include "core/Application.h"
 
 int main()
 {
