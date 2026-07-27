@@ -31,7 +31,7 @@ namespace sim {
         
         // Arbitrary values 
         float waveSpeed_ = 10.0f;
-        float damping_ = 0.995f;
+        float damping_ = 0.0f;
     };
 
 }

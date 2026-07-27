@@ -2,6 +2,7 @@
 
 #include "graphics/FieldRenderer.h"
 #include <raylib.h>
+#include <iostream>
 
 namespace graphics {
 
@@ -16,14 +17,15 @@ void FieldRenderer::render(const sim::Field& field)
 
     for (std::size_t x = 0; x < field.getWidth(); ++x) {
         for (std::size_t y = 0; y < field.getHeight(); ++y) {
-            auto target = field.at(x, y);
-            Color color;
-            if (target.amplitude > 0)
-                color = {255, 0, 0, 255};
-            else if (target.amplitude < 0)
-                color = {0, 0, 255, 255};
-            else
-                color = RAYWHITE;
+            float amplitude = field.at(x, y).amplitude;
+            float normalized = 0.5f + 0.5f * (amplitude / 10.0f);
+
+            std::cout << amplitude << std::endl;
+
+            unsigned char r = (unsigned char)(255 * normalized);
+            unsigned char g = 0;
+            unsigned char b = (unsigned char)(255 * (1.0f - normalized));
+            Color color = { r, g, b, 255 };
 
             DrawRectangle(
                 xOffset + x * field.getCellSize(),

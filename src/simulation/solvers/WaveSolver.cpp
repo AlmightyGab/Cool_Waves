@@ -46,8 +46,8 @@ namespace sim {
                 Cell& currentCell = field.at(x, y);
                 Cell& newCell = nextField.at(x, y);
 
-                if (currentCell.isSource) 
-                    continue;
+                // if (currentCell.isSource) 
+                //     currentCell.amplitude
 
                 float laplacian = computeLaplacian(field, x, y);
                 float damping = getDampingCoefficient();
