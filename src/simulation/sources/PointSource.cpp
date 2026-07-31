@@ -33,11 +33,6 @@ namespace sim {
         field_.at(x, y).isSource = true;
     }
 
-    PointSource::~PointSource()
-    { 
-        field_.at(x_, y_).isSource = false; 
-    }
-
     void PointSource::apply(Field& field, float time, float dt) 
     {
         Cell& cell = field.at(x_, y_);

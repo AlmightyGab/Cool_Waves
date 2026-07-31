@@ -7,7 +7,6 @@
 #include "simulation/configs/PointSourceConfig.h"
 #include "simulation/configs/SimulationConfig.h"
 #include "simulation/fields/Field.h"
-#include "simulation/grid/Cell.h"
 #include "simulation/grid/Grid2D.h"
 #include "simulation/solvers/WaveSolver.h"
 #include "simulation/sources/PointSource.h"
