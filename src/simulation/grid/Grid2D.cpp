@@ -1,11 +1,13 @@
 // Grid2D definition file.
 
-#include "simulation/grid/Grid2D.h"
-#include "simulation/configs/SimulationConfig.h"
-
 #include <cstddef>
 #include <raylib.h>
 #include <stdexcept>
+#include <vector>
+
+#include "simulation/configs/SimulationConfig.h"
+#include "simulation/grid/Cell.h"
+#include "simulation/grid/Grid2D.h"
 
 namespace sim {
 
@@ -33,6 +35,18 @@ namespace sim {
 
         std::size_t index = y * width_ + x;
         return cells_[index];
+    }
+
+    Grid2D& Grid2D::operator=(const Grid2D& other)
+    {
+        if (this != &other) {
+            width_ = other.width_;
+            height_ = other.height_;
+            cells_ = std::move(other.cells_);
+            cellSize_ = other.cellSize_;
+        }
+
+        return *this;
     }
 
 }

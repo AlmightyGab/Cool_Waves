@@ -22,7 +22,7 @@ namespace sim {
 
     private:
         float computeLaplacian(
-            Field field,
+            const Field& field,
             std::size_t x,
             std::size_t y
         ) const;
