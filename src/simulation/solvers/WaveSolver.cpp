@@ -1,14 +1,17 @@
 // WaveSolver source file.
 
-#include "simulation/solvers/WaveSolver.h"
 #include <cstddef>
 #include <raylib.h>
+#include <iostream>
+
+#include "simulation/solvers/WaveSolver.h"
 #include "simulation/fields/Field.h"
+#include "simulation/grid/Cell.h"
 #include "core/MathUtils.h"
 
 namespace sim {
 
-    float WaveSolver::computeLaplacian(Field field, std::size_t x, std::size_t y) const
+    float WaveSolver::computeLaplacian(const Field& field, std::size_t x, std::size_t y) const
     {
         // Amplitudes relative to the provided coordinate
         float center = field.at(x, y).amplitude;
@@ -38,7 +41,7 @@ namespace sim {
 
     void WaveSolver::solve(Field& field, float dt)
     {
-        Field nextField = field;
+        Field nextField = Field(field);
 
         for (std::size_t y = 1; y < field.getHeight() - 1; ++y) {
             for (std::size_t x = 1; x < field.getWidth() - 1; ++x) {
@@ -46,8 +49,11 @@ namespace sim {
                 Cell& currentCell = field.at(x, y);
                 Cell& newCell = nextField.at(x, y);
 
-                // if (currentCell.isSource) 
-                //     currentCell.amplitude
+                if (currentCell.isSource) {
+                    newCell.previousAmplitude = currentCell.amplitude;
+                    newCell.isSource = true;
+                    continue;
+                }
 
                 float laplacian = computeLaplacian(field, x, y);
                 float damping = getDampingCoefficient();
@@ -58,10 +64,13 @@ namespace sim {
                     + math::square(getWaveSpeed() * dt) * laplacian;
 
                 newCell.previousAmplitude = currentCell.amplitude;
+
+                std::cout << "(" << newCell.amplitude << ", " << newCell.previousAmplitude << ")" << std::endl;
+
             }
         }
 
-        field = std::move(nextField);
+        field = Field(nextField);
 
         applyFixedDirichletBoundary(field);
     }

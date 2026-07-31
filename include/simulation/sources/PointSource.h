@@ -3,18 +3,18 @@
 
 #include <cstddef>
 
-#include "simulation/configs/PointSourceConfig.h"
 #include "simulation/sources/WaveSource.h"
-#include "simulation/fields/Field.h"
 
 namespace sim {
+    class Field;
+    class PointSourceConfig;
 
     class PointSource : public WaveSource
     {
     public:
         PointSource(const PointSourceConfig& config, Field& field);
         PointSource(std::size_t x, std::size_t y, float amplitude, float frequency, float phaseOffset, Field& field);
-        ~PointSource() { field_.at(x_, y_).isSource = false; }
+        virtual ~PointSource();
 
         void apply(Field& field, float time, float dt) override;
     
