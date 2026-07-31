@@ -1,19 +1,22 @@
 // Field object class header file. (Physical meaning using the sim::Grid2D container.
 #pragma once
 
+#include <raylib.h>
 #include <cstddef>
 
+#include "simulation/grid/Grid2D.h"
+
 namespace sim {
-    class Grid2D;
-    class Cell;
 
     class Field
     {
     public:
         explicit Field() = default;
-        explicit Field(Grid2D& grid);
-        explicit Field(const Field& other);
-        virtual ~Field();
+        explicit Field(Grid2D& other);
+        explicit Field(const Field&);
+        Field(Field&&) = default;
+
+        virtual ~Field() = default;
 
         Cell& at(std::size_t x, std::size_t y);
         const Cell& at(std::size_t x, std::size_t y) const;
@@ -23,12 +26,13 @@ namespace sim {
 
         float getCellSize() const;
 
-        void move(Field& other);
+        Field& operator=(const Field&) = default;
+        Field& operator=(Field&&) = default;
 
-        Field& operator=(const Field& other);
+        void swap(Field& other);
 
     private:
-        Grid2D* grid_;
+        Grid2D grid_;
         
     };
 

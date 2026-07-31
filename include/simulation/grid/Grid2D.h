@@ -11,8 +11,10 @@ namespace sim {
     class Grid2D
     {
     public:
+        Grid2D() = default;
+        Grid2D(const Grid2D& other);
         Grid2D(const SimulationConfig& config);
-        ~Grid2D() = default;
+        virtual ~Grid2D() = default;
 
         const Cell& getCell(std::size_t x, std::size_t y) const;
         Cell& getCell(std::size_t x, std::size_t y);

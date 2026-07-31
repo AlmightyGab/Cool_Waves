@@ -65,12 +65,12 @@ namespace sim {
 
                 newCell.previousAmplitude = currentCell.amplitude;
 
-                std::cout << "(" << newCell.amplitude << ", " << newCell.previousAmplitude << ")" << std::endl;
+                // std::cout << "(" << newCell.amplitude << ", " << newCell.previousAmplitude << ")" << std::endl;
 
             }
         }
 
-        field = Field(nextField);
+        field.swap(nextField);
 
         applyFixedDirichletBoundary(field);
     }

@@ -1,6 +1,7 @@
 // Grid2D definition file.
 
 #include <cstddef>
+#include <ratio>
 #include <raylib.h>
 #include <stdexcept>
 #include <vector>
@@ -10,6 +11,13 @@
 #include "simulation/grid/Grid2D.h"
 
 namespace sim {
+
+    Grid2D::Grid2D(const Grid2D& other) : 
+        width_(other.width_),
+        height_(other.height_),
+        cells_(other.cells_),
+        cellSize_(other.cellSize_)
+    {}
 
     Grid2D::Grid2D(const SimulationConfig& config) :
         width_(config.gridWidth),
